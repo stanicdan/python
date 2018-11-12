@@ -1,0 +1,46 @@
+#!/usr/bin/python
+
+print "welcome to the TODO task management program"
+
+todo_list =[1]
+
+while True:
+    task = raw_input("Pleas enter a TODO task: ")
+    status = raw_input ("Was the task complete yet? (yes/no) ")
+    print "Your task is: " + task
+
+    if status == "yes":
+        todo_dict[task] = True
+
+    else:
+        todo_dict[task] = False
+
+    new = raw_input("Would you like to  enter a new task(yes/no)")
+
+    if new == "no":
+        break
+
+todo_file = open("todo.txt", "w+")
+
+print "Complete task:"
+todo_file.write("Complete task:\n")
+for item in todo_dict:
+    if todo_dict[item] is True:
+        print "-" + item
+        todo_file.write("- " + item + "\n")
+
+todo_file.write("\n")
+
+print "Incomplete tasks:"
+todo_file.write("Incomplete tasks:\n")
+for item in todo_dict:
+    if todo_dict[item] is False:
+        print "-" + item
+        todo_file.write("- " + item + "\n")
+
+todo_file.close()
+
+print "END"
+
+
+
